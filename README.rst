@@ -55,22 +55,22 @@ To visulize the odometry path of the robot in RVIZ
 	$roslaunch robot rviz_launch.launch
 
 
-Report (folder)
+Report
 ----------------------------------------------------------------------------------------
 .. begin_detailed_description
 PDF version of the report which includes all the details about the algorithm and code.
 
 
-Result
+Demo
 ----------------------------------------------------------------------------------------
 The planning result from MATLAB with the given map (Images/Simple_Map.png) should look like
 
-.. image:: https://github.com/zhuokaizhao/Planning-and-Control-for-Nonholonomic-Robot-Among-Onstacles/master/Images/final_trajectory.jpg
-   :alt: Screenshot
+.. image:: https://github.com/zhuokaizhao/Planning-and-Control-for-Nonholonomic-Robot-Among-Onstacles/blob/master/Images/final_trajectory.jpg
+   :alt: Planning trajectory
    :align: center
 
-.. image:: https://github.com/zhuokaizhao/Planning-and-Control-for-Nonholonomic-Robot-Among-Onstacles/master/Images/final_trajectory_with_quiver.jpg
-   :alt: Screenshot
+.. image:: https://github.com/zhuokaizhao/Planning-and-Control-for-Nonholonomic-Robot-Among-Onstacles/blob/master/Images/final_trajectory_with_quiver.jpg
+   :alt: Planning trajectory with quiver
    :align: center
 
 The Gazebo simulation video can be found at link_
