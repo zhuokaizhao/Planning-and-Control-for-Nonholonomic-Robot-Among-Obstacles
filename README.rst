@@ -24,7 +24,7 @@ Reads an image type map (Images/Simple_Map.png), does the planning on this map a
 
 trajectory_tracking_with_video.m and trajectory_tracking_without_video.m
 
-Simulates the trajectory tracking. Both files read the trajectory mat file (final_trajectory.m) generated previously by C_RRTStar_Final.m. The trajectory_tracking_with_video.m outputs a annimation of the whole tracking process and takes more time to run. The trajectory_tracking_without_video.m outputs basic inputs and tracking path result.
+Simulates the trajectory tracking. Both files read the trajectory mat file (Matlab/final_trajectory.m) generated previously by C_RRTStar_Final.m. The trajectory_tracking_with_video.m outputs a annimation of the whole tracking process and takes more time to run. The trajectory_tracking_without_video.m outputs basic inputs and tracking path result.
 		
 
 ROS Gazebo Simulation
@@ -37,16 +37,19 @@ On Debian/Ubuntu, first you need to set_up_Gazebo_environment_
 .. _set_up_Gazebo_environment: http://gazebosim.org/tutorials?tut=build_world
 
 To launch the simulation, run
+
 .. code-block:: bash
 	
 	$ roslaunch robot gazebo_launch.launch
 
 To start the simulation, run
+
 .. code-block:: bash
 
 	$ roslaunch robot trajectory_tracking.launch
 
 To visulize the odometry path of the robot in RVIZ
+
 .. code-block:: bash
 
 	$roslaunch robot rviz_launch.launch
@@ -61,6 +64,7 @@ PDF version of the report which includes all the details about the algorithm and
 Result
 ----------------------------------------------------------------------------------------
 The planning result from MATLAB with the given map (Images/Simple_Map.png) should look like
+
 .. image:: https://github.com/zhuokaizhao/Planning-and-Control-for-Nonholonomic-Robot-Among-Onstacles/master/Images/final_trajectory.jpg
    :alt: Screenshot
    :align: center
