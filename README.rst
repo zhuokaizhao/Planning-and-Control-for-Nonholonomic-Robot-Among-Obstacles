@@ -1,7 +1,9 @@
 Planning and Control for Nonholonomic Car-like Robot Among Onstacles
 ========================================================================================
 Contributers: Zhuokai Zhao, Mengdi Xu, Changxin Yan
+
 .. begin_brief_description
+
 The project proposes a modified RRT*-based trajectory planning algorithm with customized heuristic function. A feedback linearization controller is proposed to ensure EduMIP’s accurate trajectory tracking. Experiments have been performed in both MATLAB and ROS Gazebo simulation environment.
 
 .. contents:: Contents
@@ -9,7 +11,7 @@ The project proposes a modified RRT*-based trajectory planning algorithm with cu
    :backlinks: none
 
 
-Matlab (folder)
+Matlab
 ----------------------------------------------------------------------------------------
 .. begin_detailed_description	
 Contains all the matlab codes for planning and simualtion in Matlab.
@@ -17,14 +19,15 @@ Contains all the matlab codes for planning and simualtion in Matlab.
 C_RRTStar_Final.m 
 
 Reads an image type map (Images/Simple_Map.png), does the planning on this map and outputs a trajectory mat file in the following format:
-[time; desired_x; desired_y; desired_velocity_x; desired_velocity_y; desired_acceleration_x; desired_acceleration; desired_theta;]
+
+	[time; desired_x; desired_y; desired_velocity_x; desired_velocity_y; desired_acceleration_x; desired_acceleration; desired_theta;]
 
 trajectory_tracking_with_video.m and trajectory_tracking_without_video.m
 
 Simulates the trajectory tracking. Both files read the trajectory mat file (final_trajectory.m) generated previously by C_RRTStar_Final.m. The trajectory_tracking_with_video.m outputs a annimation of the whole tracking process and takes more time to run. The trajectory_tracking_without_video.m outputs basic inputs and tracking path result.
 		
 
-ROS Gazebo Simulation (package folder)
+ROS Gazebo Simulation
 ----------------------------------------------------------------------------------------
 .. begin_detailed_description
 This package reads the predesighed trajectory in a .txt file and simulates the trajectory tracking.
