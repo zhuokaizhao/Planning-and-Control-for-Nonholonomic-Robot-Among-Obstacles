@@ -1,0 +1,7 @@
+<launch>
+  <node name="desired_states_publisher" pkg="robot" type="desired_states_publisher" output="screen"/>
+  <node name="trajectory_tracking" pkg="robot" type="trajectory_tracking" output="screen" />
+  <param name="KP" value="2.0" />
+  <param name="KD" value="1.0" />
+  <param name="Finished" type="bool" value="false" />
+</launch>

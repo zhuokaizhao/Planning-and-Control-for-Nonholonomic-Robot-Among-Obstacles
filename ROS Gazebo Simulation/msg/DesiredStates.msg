@@ -1,0 +1,9 @@
+std_msgs/Header header
+float64 t
+float64 x1
+float64 x2
+float64 dx1
+float64 dx2
+float64 ddx1
+float64 ddx2
+float64 theta

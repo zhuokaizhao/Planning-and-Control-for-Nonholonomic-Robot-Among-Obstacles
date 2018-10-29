@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<robot name="car_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Numerical Macros - units are meters and radians -->
+  <xacro:property name="wheel_separation" value="0.26" /> 
+  <xacro:property name="wheel_radius" value="0.100" /> 
+  <xacro:property name="wheel_width"  value="0.050" />
+  <xacro:property name="body_height"  value="0.100" /> 
+  <xacro:property name="body_width"   value="0.200" /> 
+  <xacro:property name="body_length"  value="0.400" />
+  <xacro:property name="body_mass"  value="0.1" />
+  <xacro:property name="wheel_mass"  value="0.05" />
+
+   <link name="car_body">
+
+    <visual>
+      <origin xyz="0 0 ${0.5*body_height}" rpy="0 0 0" />
+      <geometry>
+        <box size="${body_length} ${body_width} ${body_height}" />
+      </geometry>
+      <material name="Blue">
+      	<color rgba="0 0.0 1.0 0.5" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 ${0.5*body_height}" rpy="0 0 0" />
+      <geometry>
+        <box size="${body_length} ${body_width} ${body_height}" />
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/> 
+      <mass value="${body_mass}"/>
+      <inertia ixx="${body_mass*(body_height*body_height+body_width*body_width)/12}" 
+        ixy="0" 
+        ixz="0" 
+        iyy="${body_mass*(body_height*body_height+body_length*body_length)/12}" 
+        iyz="0" 
+        izz="${body_mass*(body_length*body_length+body_width*body_width)/12}"/>
+    </inertial>
+   </link>
+
+   <link name="wheelR">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="1.57079 0 0" />
+      <geometry>
+        <cylinder length="${wheel_width}" radius="${wheel_radius}" />
+      </geometry>
+      <material name="Green">
+      	<color rgba="0.0 1.0 0.0 0.5" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="1.57079 0 0" />
+      <geometry>
+        <cylinder length="${wheel_width}" radius="${wheel_radius}" />
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="${wheel_mass*(3*wheel_radius*wheel_radius+wheel_width*wheel_width)/12}" 
+        ixy="0" 
+        ixz="0" 
+        iyy="${wheel_mass*(3*wheel_radius*wheel_radius+wheel_width*wheel_width)/12}" 
+        iyz="0" 
+        izz="${wheel_mass*wheel_radius*wheel_radius/2}"/>
+      </inertial>
+   </link>
+
+   <link name="wheelL">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="1.57079 0 0" />
+      <geometry>
+        <cylinder length="${wheel_width}" radius="${wheel_radius}" />
+      </geometry>
+      <material name="Red">
+      	<color rgba="1 0 0 0.5" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="1.57079 0 0" />
+      <geometry>
+        <cylinder length="${wheel_width}" radius="${wheel_radius}" />
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="${wheel_mass*(3*wheel_radius*wheel_radius+wheel_width*wheel_width)/12}" 
+        ixy="0" 
+        ixz="0" 
+        iyy="${wheel_mass*(3*wheel_radius*wheel_radius+wheel_width*wheel_width)/12}" 
+        iyz="0" 
+        izz="${wheel_mass*wheel_radius*wheel_radius/2}"/>
+    </inertial>
+   </link>
+
+   <link name="suport">
+
+    <visual>
+      <origin xyz="0 0 ${-0.5 * wheel_radius}" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="${0.5 * wheel_radius}" />
+      </geometry>
+      <material name="Blue">
+      	<color rgba="0 0.0 1.0 0.5" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 ${-0.5 * wheel_radius}" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="${0.5 * wheel_radius}" />
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 ${-0.5 * wheel_radius}" rpy="0 0 0"/> 
+      <mass value="0.05"/>
+      <inertia ixx="6.0e-4" ixy="0" ixz="0" iyy="6.0e-4" iyz="0" izz="6.0e-4"/>
+    </inertial>
+   </link>
+
+
+   <!-- Joints -->
+   <joint name="jointL" type="continuous">
+    <parent link="car_body" />
+    <child link="wheelL" />
+    <origin xyz="${-body_length * 0.35} ${-wheel_separation * 0.5} 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <dynamics friction="0.0"/>
+   </joint>
+
+   <joint name="jointR" type="continuous">
+    <parent link="car_body" />
+    <child link="wheelR" />
+    <origin xyz="${-body_length * 0.35} ${+wheel_separation * 0.5} 0" rpy="0 0 0" />
+    <dynamics friction="0.0"/>
+    <axis xyz="0 1 0" />
+   </joint>
+
+   <joint name="jointS" type="fixed">
+    <parent link="car_body" />
+    <child link="suport" />
+    <origin xyz="${body_length * 0.35} 0 0" rpy="0 0 0" />
+    <dynamics friction="0.0"/>
+   </joint>
+
+  <gazebo reference="car_body">
+   <material>Gazebo/Blue</material>
+   <mu1>0.001</mu1>
+   <mu2>0.001</mu2>    
+ </gazebo>
+ <gazebo reference="wheelR">
+   <material>Gazebo/Green</material>
+   <mu1>100.0</mu1>
+   <mu2>10.0</mu2> 
+   <kp>100000.0</kp>
+   <kd>1.0</kd>
+   <minDepth>0.001</minDepth>
+ </gazebo>
+ <gazebo reference="wheelL">
+   <material>Gazebo/Red</material>
+   <mu1>100.0</mu1>
+   <mu2>10.0</mu2>
+   <kp>100000.0</kp>
+   <kd>1.0</kd>
+   <minDepth>0.001</minDepth>
+ </gazebo>
+  <gazebo reference="support">
+   <material>Gazebo/Blue</material>
+   <mu1>0.001</mu1>
+   <mu2>0.001</mu2>   
+  </gazebo>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100</updateRate>
+      <leftJoint>jointL</leftJoint>
+      <rightJoint>jointR</rightJoint>
+      <wheelSeparation>${wheel_separation}</wheelSeparation>
+      <wheelDiameter>${wheel_radius * 2}</wheelDiameter>
+      <torque>20</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>car_body</robotBaseFrame>
+    </plugin>
+
+
+    <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <bodyName>car_body</bodyName>
+      <topicName>ground_truth/state</topicName>
+      <!--gaussianNoise>0.001</gaussianNoise -->
+      <frameName>world</frameName>
+      <xyzOffsets>${-body_length * 0.35} 0 0</xyzOffsets>
+      <rpyOffsets>0 0 0</rpyOffsets>
+    </plugin>
+  </gazebo>
+
+</robot>

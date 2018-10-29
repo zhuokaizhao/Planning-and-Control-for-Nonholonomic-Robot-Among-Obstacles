@@ -1,0 +1,6 @@
+<launch>
+  <param name="robot_description"
+  	command="$(find xacro)/xacro --inorder '$(find robot)/urdf/mobile_robot.xacro' " />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot)/rviz/robot_rviz.rviz --fixed-frame world"
+  required="true" />
+</launch>
