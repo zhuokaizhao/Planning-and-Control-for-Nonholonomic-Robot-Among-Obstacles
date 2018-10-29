@@ -63,6 +63,10 @@ PDF version of the report which includes all the details about the algorithm and
 
 Demo
 ----------------------------------------------------------------------------------------
+The Gazebo simulation video can be found at link_
+
+.. _link: https://www.youtube.com/watch?v=cwlF7IM-nAs
+
 The planning result from MATLAB with the given map (Images/Simple_Map.png) should look like
 
 .. image:: https://github.com/zhuokaizhao/Planning-and-Control-for-Nonholonomic-Robot-Among-Onstacles/blob/master/Images/final_trajectory.jpg
@@ -72,10 +76,6 @@ The planning result from MATLAB with the given map (Images/Simple_Map.png) shoul
 .. image:: https://github.com/zhuokaizhao/Planning-and-Control-for-Nonholonomic-Robot-Among-Onstacles/blob/master/Images/final_trajectory_with_quiver.jpg
    :alt: Planning trajectory with quiver
    :align: center
-
-The Gazebo simulation video can be found at link_
-
-.. _link: https://www.youtube.com/watch?v=cwlF7IM-nAs
 
 
 
