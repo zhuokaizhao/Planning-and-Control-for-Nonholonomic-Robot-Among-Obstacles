@@ -1,6 +1,8 @@
 Planning and Control for Nonholonomic Car-like Robot Among Onstacles
 ========================================================================================
-Contributers: Zhuokai Zhao, Mengdi Xu, Changxin Yan
+Contributers: Zhuokai Zhao, Mengdi Xu, Changxin Yan [Github_]
+
+.. _Github: https://github.com/ChangxinY/
 
 .. begin_brief_description
 
